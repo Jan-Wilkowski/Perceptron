@@ -19,8 +19,8 @@ public class Main {
         perceptron.train(trainingData,epochs);
 
         int correctCount = 0;
-        int[] speciesCorrectCount = new int[2]; // Liczniki poprawnie rozpoznanych gatunków
-        int[] speciesTotalCount = new int[2]; // Liczniki wszystkich kwiatów danego gatunku w zbiorze testowym
+        int[] speciesCorrectCount = new int[2];
+        int[] speciesTotalCount = new int[2];
 
         for (Node node : testData) {
             List<Double> inputs = node.getVector();
@@ -35,14 +35,12 @@ public class Main {
             speciesTotalCount[target]++;
         }
 
-        // Obliczanie procentu poprawnie rozpoznanych kwiatów
         double accuracy = (double) correctCount / testData.size() * 100;
         System.out.println("Procent poprawnie rozpoznanych kwiatów: " + accuracy + "%");
 
-        // Obliczanie procentu poprawnie rozpoznanych kwiatów dla poszczególnych gatunków
         for (int i = 0; i < 2; i++) {
             double speciesAccuracy = (double) speciesCorrectCount[i] / speciesTotalCount[i] * 100;
-            System.out.println("Procent poprawnie rozpoznanych kwiatów dla gatunku " + i + ": " + speciesAccuracy + "%");
+            System.out.println("Procent poprawnie rozpoznanych kwiatów dla flagi " + i + ": " + speciesAccuracy + "%");
         }
     }
 }
